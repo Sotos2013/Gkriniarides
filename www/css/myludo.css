@@ -4,7 +4,7 @@
 
 td.W_square{background-color: white;}
 td.R_square {background-color: red;}
-td.G_square {background-color:greenyellow;}
+td.G_square {background-color:green;}
 td.B_square{background-color: blue;}
 td.Y_square{background-color: yellow;}
 
@@ -44,6 +44,9 @@ TD.tomove {border:3px solid blue; background-color:blue;}
    background-color: #e0e0e0; /* Add your preferred background color */
   
 }
+#ludo_table {
+   background-color: aqua;
+}
 
  .clickableR:hover {
    background-color: #c0c0c0; /* Change background color on hover */
@@ -61,10 +64,10 @@ TD.tomove {border:3px solid blue; background-color:blue;}
    
 }
 
- td.GR_square{background:linear-gradient(to bottom left, red 50%, greenyellow 50%);  } 
+ td.GR_square{background:linear-gradient(to bottom left, red 50%, green 50%);  } 
  td.BR_square{background:linear-gradient(to bottom right, red 50%, blue 50%);}
  td.BY_square{background:linear-gradient(to bottom left, blue 50%, yellow 50%);}
- td.GY_square{background:linear-gradient(to bottom right, greenyellow 50%, yellow 50%);}
+ td.GY_square{background:linear-gradient(to bottom right, green 50%, yellow 50%);}
  td.MIX_square{ 
     border-left-color:    cyan;
     border-right: 20px solid red;

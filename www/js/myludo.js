@@ -4,7 +4,6 @@ var board={};
 var last_update=new Date().getTime();
 var timer=null;
 
-
 $(function(){
     draw_empty_board();
     fill_board();
@@ -24,39 +23,21 @@ $(function(){
    // $('#the_move_src').change( update_moves_selector);
 	//$('#do_move2').click( do_move2);
 });
-
-
-function randomNum() {
-    if (!clicked) {
-        num = Math.floor((Math.random() * 6) + 1);;
-        var dice = document.getElementById('ludo_roll');
-        //dice.style.backgroundImage = "url(Images/" + num + ".jpg)";
-        clicked = true;
-    }
-    if (num != 6&&DontHaveOtherFree()) {
-        //var bad = document.getElementById('badtext');
-        bad.innerText = "Unfortunatlly you stuck";
-        window.setTimeout(changePlayer, 1000);
-        clicked = false;
-    }
-}
  
  function reset_players() {
-    
         // Send an AJAX request to the server to update the database
         $.ajax({
-            url: 'ludo.php/delete_players/', // Adjust the path to your server-side script
-            method: 'POST',
-dataType: "json",
-         
-            contentType: 'application/json',
-            data: { action: 'reset_players' }, // Pass the action as part of the data
-            success: function(response) {
+        url: 'ludo.php/delete_players/', // Adjust the path to your server-side script
+        method: 'POST',
+        dataType: "json",
+        contentType: 'application/json',
+        data: { action: 'reset_players' }, // Pass the action as part of the data
+            success: function(_response) {
                 // Handle the response from the server
-                alert('js Database updated successfully!');
+                alert('Οι παίκτες διαγράφηκαν!');
             },
             error: function() {
-                alert('js Error occurred while updating the database.');
+                alert('Πρόβλημα με τη διαγραφή!');
             }
         });
     // game_status_update();
@@ -136,15 +117,14 @@ function fill_board_by_data(data) {
  
 
     function login_result(data) {
-
         me = data[0];
         $('#game_initializer').hide();
-       update_info();
-          game_status_update();
+        update_info();
+        game_status_update();
     }
     
     
-    function login_error(data, y, z, c) {
+    function login_error(data, _y, _z, _c) {
         var x = data.responseJSON;
      
             alert(x.errormesg);
@@ -198,7 +178,7 @@ function fill_board_by_data(data) {
             
             var a = s.trim().split(/[ ]+/);
             if(a.length!=4) {
-             //   alert('Must give 4 numbers');
+                alert('Must give 4 numbers');
                 return;
             }
             $.ajax({url: "ludo.php/board/piece/"+a[0]+'/'+a[1], 
@@ -218,13 +198,13 @@ function fill_board_by_data(data) {
         function roll_dice(){
     
            // Send an AJAX request to the server to update the database
-       $.ajax({
-           url: 'ludo.php/roll/', // Adjust the path to your server-side script
-           method: 'GET',
-  dataType: "json",
-headers: { "X-Token": me.token },
-           contentType: 'application/json',
-           data: { action: 'roll' }, 
+            $.ajax({
+            url: 'ludo.php/roll/', // Adjust the path to your server-side script
+            method: 'GET',
+            dataType: "json",
+            headers: { "X-Token": me.token },
+            contentType: 'application/json',
+            data: { action: 'roll' }, 
            
            
            // Pass the action as part of the data
@@ -234,17 +214,15 @@ headers: { "X-Token": me.token },
                    $("#diceResult").text("Dice Result: " +data[0].generated_dice_result); 
                       if (game_status.p_turn == 'Y') {
                         makeImagesClickableY();
-         } else {
-            makeImagesClickableR();
-         }
-      
-                 
+                    } else {
+                        makeImagesClickableR();
+                    }         
             },
             error: function() {
                 alert('Error occurred while rolling the dice.');
             }
         });
-    // game_status_update();
+            //game_status_update();
            }
   
  
@@ -288,7 +266,7 @@ function roll_dice_Y1() {
               // Handle the case where 'dice' is not present or invalid
           }
       },
-      error: function (xhr, status, error) {
+      error: function (xhr, _status, _error) {
           // Handle the error response
           console.error("Error Response:", xhr.responseText);
           // You might want to handle errors and display an appropriate message
@@ -316,7 +294,7 @@ function roll_dice_Y1() {
               });
             }
               ,
-       error: function (xhr, status, error) {
+       error: function (xhr, _status, _error) {
            // Handle the error response
            console.error("Error Response:", xhr.responseText);
            // You might want to handle errors and display an appropriate message
@@ -366,7 +344,7 @@ function roll_dice_Y1() {
                // Handle the case where 'dice' is not present or invalid
            }
        },
-       error: function (xhr, status, error) {
+       error: function (xhr, _status, _error) {
            // Handle the error response
            console.error("Error Response:", xhr.responseText);
            // You might want to handle errors and display an appropriate message
@@ -394,7 +372,7 @@ function roll_dice_Y1() {
           });
         }
           ,
-   error: function (xhr, status, error) {
+   error: function (xhr, _status, _error) {
        // Handle the error response
        console.error("Error Response:", xhr.responseText);
        // You might want to handle errors and display an appropriate message
@@ -440,7 +418,7 @@ function roll_dice_Y1() {
                // Handle the case where 'dice' is not present or invalid
            }
        },
-       error: function (xhr, status, error) {
+       error: function (xhr, _status, _error) {
            // Handle the error response
            console.error("Error Response:", xhr.responseText);
            // You might want to handle errors and display an appropriate message
@@ -468,7 +446,7 @@ function roll_dice_Y1() {
           });
         }
           ,
-   error: function (xhr, status, error) {
+   error: function (xhr, _status, _error) {
        // Handle the error response
        console.error("Error Response:", xhr.responseText);
        // You might want to handle errors and display an appropriate message
@@ -514,7 +492,7 @@ function roll_dice_Y1() {
                // Handle the case where 'dice' is not present or invalid
            }
        },
-       error: function (xhr, status, error) {
+       error: function (xhr, _status, _error) {
            // Handle the error response
            console.error("Error Response:", xhr.responseText);
            // You might want to handle errors and display an appropriate message
@@ -542,7 +520,7 @@ function roll_dice_Y1() {
            });
          }
            ,
-    error: function (xhr, status, error) {
+    error: function (xhr, _status, _error) {
         // Handle the error response
         console.error("Error Response:", xhr.responseText);
         // You might want to handle errors and display an appropriate message
@@ -590,7 +568,7 @@ function roll_dice_Y1() {
                    // Handle the case where 'dice' is not present or invalid
                }
            },
-           error: function (xhr, status, error) {
+           error: function (xhr, _status, _error) {
                // Handle the error response
                console.error("Error Response:", xhr.responseText);
                // You might want to handle errors and display an appropriate message
@@ -618,7 +596,7 @@ function roll_dice_Y1() {
                });
              }
                ,
-        error: function (xhr, status, error) {
+        error: function (xhr, _status, _error) {
             // Handle the error response
             console.error("Error Response:", xhr.responseText);
             // You might want to handle errors and display an appropriate message
@@ -667,7 +645,7 @@ function roll_dice_Y1() {
                   // Handle the case where 'dice' is not present or invalid
               }
           },
-          error: function (xhr, status, error) {
+          error: function (xhr, _status, _error) {
               // Handle the error response
               console.error("Error Response:", xhr.responseText);
               // You might want to handle errors and display an appropriate message
@@ -695,7 +673,7 @@ function roll_dice_Y1() {
                });
              }
                ,
-        error: function (xhr, status, error) {
+        error: function (xhr, _status, _error) {
             // Handle the error response
             console.error("Error Response:", xhr.responseText);
             // You might want to handle errors and display an appropriate message
@@ -742,7 +720,7 @@ function roll_dice_Y1() {
                   // Handle the case where 'dice' is not present or invalid
               }
           },
-          error: function (xhr, status, error) {
+          error: function (xhr, _status, _error) {
               // Handle the error response
               console.error("Error Response:", xhr.responseText);
               // You might want to handle errors and display an appropriate message
@@ -770,7 +748,7 @@ function roll_dice_Y1() {
                });
              }
                ,
-        error: function (xhr, status, error) {
+        error: function (xhr, _status, _error) {
             // Handle the error response
             console.error("Error Response:", xhr.responseText);
             // You might want to handle errors and display an appropriate message
@@ -819,7 +797,7 @@ function roll_dice_Y1() {
                   // Handle the case where 'dice' is not present or invalid
               }
           },
-          error: function (xhr, status, error) {
+          error: function (xhr, _status, _error) {
               // Handle the error response
               console.error("Error Response:", xhr.responseText);
               // You might want to handle errors and display an appropriate message
@@ -847,7 +825,7 @@ function roll_dice_Y1() {
                });
              }
                ,
-        error: function (xhr, status, error) {
+        error: function (xhr, _status, _error) {
             // Handle the error response
             console.error("Error Response:", xhr.responseText);
             // You might want to handle errors and display an appropriate message

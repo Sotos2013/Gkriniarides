@@ -81,7 +81,7 @@ function reset_players(){
 
     $sql = 'call clean_players()';
     $mysqli->query($sql);
-show_users();
+	show_users();
 }
 
 function current_color($token) {

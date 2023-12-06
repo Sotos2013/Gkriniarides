@@ -34,11 +34,10 @@
         <button id='ludo_login' class='btn btn-primary'>ΕΙΣΟΔΟΣ ΣΤΟ ΠΑΙΧΝΙΔΙ</button><br>
         </div>   
         <div id='move_div'>
-                    Δώσε κίνηση (x1 y1 x2 y2): <input id='the_move'> 
-                     <button id='do_move' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ</button> </div>
-                     <br><br>
- 
-</div>
+            Δώσε κίνηση (x1 y1 x2 y2): <input id='the_move'> 
+        <button id='do_move' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ</button> </div>
+        <br><br>
+    </div>
                  
  
                      
