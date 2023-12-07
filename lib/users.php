@@ -1,8 +1,6 @@
 <?php
 require_once "../lib/game.php"; 
  
-
-
 function show_users() {
 	global $mysqli;
 	$sql = 'select username,piece_color from players';
@@ -12,7 +10,6 @@ function show_users() {
 	header('Content-type: application/json');
 	print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 } 
- 
 
 function show_user($b) {
 	global $mysqli;
@@ -25,32 +22,25 @@ function show_user($b) {
 	print json_encode($res->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
 }
 
-
 function set_user($b, $input) {
-	// print_r($input);
 	if (!isset($input['username']) || $input['username'] == '') {
 		header("HTTP/1.1 400 Bad Request");
 		print json_encode(['errormesg' => "No username given."]);
 		exit;
 	}
-	
     $username = $input['username'];
 	global $mysqli;
- 
-  
 	$sql = 'select count(*) as c from players where piece_color=? and username is not null';
 	$st = $mysqli->prepare($sql);
 	$st->bind_param('s', $b);
 	$st->execute();
 	$res = $st->get_result();
 	$r = $res->fetch_all(MYSQLI_ASSOC);
-	
 	if($r[0]['c']>0) {
 		header("HTTP/1.1 400 Bad Request");
 		print json_encode(['errormesg'=>"Player $b is already set. Please select another color."]);
 		exit;
 	}
-        // Update the player's information
 	$sql = 'update players set username=?, token=md5(CONCAT( ?, NOW()))  where piece_color=?';
 	$st2 = $mysqli->prepare($sql);
 	$st2->bind_param('sss', $username, $username, $b);
@@ -67,7 +57,6 @@ function set_user($b, $input) {
 	
 	
 }
-
 function handle_user($method, $b,$input) {
 	if($method=='GET') {
 		show_user($b);
@@ -75,19 +64,17 @@ function handle_user($method, $b,$input) {
         set_user($b,$input);
     } 	 
 }
-
 function reset_players(){
 	global $mysqli;
-
     $sql = 'call clean_players()';
     $mysqli->query($sql);
 	show_users();
 }
-
 function current_color($token) {
-	
 	global $mysqli;
-	if($token==null) {return(null);}
+	if($token==null) {
+		return(null);
+	}
 	$sql = 'select * from players where token=?';
 	$st = $mysqli->prepare($sql);
 	$st->bind_param('s',$token);
@@ -98,5 +85,4 @@ function current_color($token) {
 	}
 	return(null);
 }
-
 ?>

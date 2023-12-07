@@ -14,38 +14,37 @@ TD.tomove {border:3px solid blue; background-color:blue;}
 #ludo_board td.R_square.highlight {
    background-color: yellow;
    border: 1px solid red;
-   /* Add any other styling as needed */
+
 }
 #ludo_board td.G_square.highlight {
    background-color: yellow;
    border: 1px solid red;
-   /* Add any other styling as needed */
+
 }
 #ludo_board td.B_square.highlight {
    background-color: yellow;
    border: 1px solid red;
-   /* Add any other styling as needed */
+
 }
 #ludo_board td.Y_square.highlight {
    background-color: yellow;
    border: 1px solid red;
-   /* Add any other styling as needed */
+
 }
 #ludo_board td.W_square.highlight {
    background-color: yellow;
    border: 1px solid red;
-   /* Add any other styling as needed */
 }
 
  
  .clickableR {
    cursor: pointer;
-   border: 2px solid #00f; /* Add your preferred border styling */
-   background-color: #e0e0e0; /* Add your preferred background color */
+   border: 2px solid blue; /* Add your preferred border styling */
+   background-color: white; /* Add your preferred background color */
   
 }
 #ludo_table {
-   background-color: aqua;
+   background-color: white;
 }
 
  .clickableR:hover {

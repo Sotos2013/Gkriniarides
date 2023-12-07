@@ -1,12 +1,6 @@
-
-
 </body>
-
 <footer id="footer">
-    <p>&copy; 2023 ADISE23_LUDO_GAME. Dimitris, Blue, Kapten</p>
+    <p>&copy; ADISE23SoyBeans</p>
 </footer>
-
- </html>
-
- 
-<script src="js/myludo.js"></script>
+ </html> 
+<script src="js/ludo.js"></script>

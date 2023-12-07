@@ -42,11 +42,6 @@
     color: white;
   }
 
-    /*-----finish navybox-----*/
-  
-
-    /*-----PageName-----*/
-
   #h1Name{
     display: flex;
     position: relative;
@@ -55,9 +50,6 @@
     height: 8vh;
   }
 
-    /*-----Finish PageName-----*/
-
-    /*-----Board-----*/
 
   #main_body {
     height: 70vh;
@@ -93,9 +85,7 @@
     background-color: white;
     color: black;
   }
-    /*-----Finish Board-----*/
 
-    /*-----Form-----*/
 
   #form{
     display: flex;
@@ -115,15 +105,11 @@
   }
   
   #submit{
-    width: 100%; /* Make the button as wide as the input fields */
+    width: 100%;
     padding: 10px;
     box-sizing: border-box;
     margin-top: 10px;
   }
-
-    /*-----Finish Form-----*/
-  
-    /*-----Buttton-----*/
 
   #gameButton {
     display: flex;
@@ -139,9 +125,6 @@
     margin-right: 10px;
   }
 
-    /*-----Finish Buttton-----*/
-
-    /*-----Footer-----*/
 
   #footer{
     display: flex;
@@ -154,5 +137,3 @@
     background-color: navy;
 
   }
-
-    /*-----Finish Media Query-----*/

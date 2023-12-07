@@ -17,7 +17,10 @@ $(function(){
     $('#move_div').hide();
     $('#do_move_roll').click(roll_dice);
     $('#move_div_roll').hide();
-    $('YY1.png').click(roll_dice_Y1);
+    $('y1.png').click(roll_dice_Y1);
+    $('y2.png').click(roll_dice_Y2);
+    $('y3.png').click(roll_dice_Y3);
+    $('y4.png').click(roll_dice_Y4);
  
 
    // $('#the_move_src').change( update_moves_selector);
@@ -40,7 +43,7 @@ $(function(){
                 alert('Πρόβλημα με τη διαγραφή!');
             }
         });
-    // game_status_update();
+        game_status_update();
 
     } 
  
@@ -120,7 +123,7 @@ function fill_board_by_data(data) {
         me = data[0];
         $('#game_initializer').hide();
         update_info();
-        game_status_update();
+        //game_status_update();
     }
     
     
@@ -305,7 +308,6 @@ function roll_dice_Y1() {
 
 
   function roll_dice_Y2() {
-   
      // Make an AJAX call to the server to perform the move
      $.ajax({
          url: "ludo.php/rollY2",
@@ -320,14 +322,12 @@ function roll_dice_Y1() {
          
            if (Array.isArray(data) && data.length > 0 && 'dice' in data[data.length - 1]) {
                 $("#diceResult").text("Dice Result: " + data[data.length - 1].dice);
-          
                  // Check if the dice result is 6
                  if ('dice' in data && data[data.length - 1].dice === 6) {
                     makeImagesClickableY();
                     makeImagesUnclickableR();
                 } else {
                    makeImagesClickableY();
-
                     makeImagesUnclickableR();
               //    do_move();
                 }
@@ -900,7 +900,7 @@ function roll_dice_Y1() {
 
     function makeImagesClickableY() {
         // Make all image td elements clickable and highlighted
-        $('.piece').filter('[src^="images/Y"]').parent('td').addClass('clickableY').click(onImageClickY);
+        $('.piece').filter('[src^="images/y"]').parent('td').addClass('clickableY').click(onImageClickY);
        // $('.piece').parent('td').addClass('clickableY').click(onImageClickY);
     }
     function makeImagesUnclickableY() {
@@ -912,9 +912,9 @@ function roll_dice_Y1() {
         var imageName = $(clickedTd).find('img').attr('src'); // Get the image source
     
         // Check if the image name starts with "YY"
-        if (imageName && imageName.startsWith('images/YY')) {
+        if (imageName && imageName.startsWith('images/y')) {
              
-            var imageNumber = imageName.replace('images/YY', '').replace('.png', '');
+            var imageNumber = imageName.replace('images/y', '').replace('.png', '');
           
             // Use a switch statement to distinguish different actions based on the image number
             switch (imageNumber) {
@@ -936,17 +936,17 @@ function roll_dice_Y1() {
                 case '3':
                     // Action for YY3
                     console.log('Clicked on YY3:', imageName);
-                   // do_move();
+                    do_move();
                   roll_dice_Y3();
-              //      do_move();
+                     do_move();
                     // Add your custom logic for YY3
                     break;
                 case '4':
                     // Action for YY4
                     console.log('Clicked on YY4:', imageName);
-                  //  do_move();
+                    do_move();
                     roll_dice_Y4();
-                //    do_move();
+                    do_move();
                     // Add your custom logic for YY4
                     break;
                 default:
@@ -959,9 +959,6 @@ function roll_dice_Y1() {
             // Add logic for other images if needed
         }
     }
-
- 
-
         function move_result(data){
           //  fill_board_by_data
          
