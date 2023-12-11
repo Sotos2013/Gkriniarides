@@ -17,10 +17,10 @@ if(isset($_SERVER['HTTP_X_TOKEN'])) {
     $input['token']='';
 }
  switch ($r=array_shift($request)) {
-    case 'board' :
-	switch ($b=array_shift($request)) {
-		case '': 
-		case null: handle_board($method);break;
+    case 'board':
+		switch ($b=array_shift($request)) {
+			case '': handle_board($method);break;
+			case null: handle_board($method);break;
  	case 'piece': handle_piece($method, $request[0],$request[1],$input);
  				break;
 	case 'player': handle_player($method, $request[0],$input);
@@ -216,11 +216,7 @@ function handle_player($method, $p,$input) {
 		case '':
 		case null: if($method=='GET') {displayAllUsers($method);}
 	 			   else {header("HTTP/1.1 400 Bad Request"); 
- 					 print json_encode(['errormesg'=>"Method $method not allowed here."]);}
-   
-		
-		
-		          
+ 					 print json_encode(['errormesg'=>"Method $method not allowed here."]);}          
         case 'R':  handle_user($method, $b,$input);
 		break;
 			case 'B':  handle_user($method, $b,$input);
