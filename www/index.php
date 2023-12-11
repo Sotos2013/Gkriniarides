@@ -1,6 +1,6 @@
 
 <?php include_once "header.php"; ?>
-<div id="h1Name"><h1 id="name">γκρινιαρης</h1></div>
+<div id="h1Name"><h1 id="name">LUDO</h1></div>
     <section id='main_body'>
         <div id='ludo_board'></div>
         <div id='ui_Chat'>
