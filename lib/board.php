@@ -5,7 +5,6 @@
 
 function show_piece($x,$y) {
 	global $mysqli;
-	
 	$sql = 'select * from board where x=? and y=?';
 	$st = $mysqli->prepare($sql);
 	$st->bind_param('ii',$x,$y);
@@ -86,16 +85,13 @@ function do_move($x, $y, $x2, $y2)
 
 
 function show_board_by_player($b) {
-
 	global $mysqli;
-
 	$orig_board=read_board();
 	$board=convert_board($orig_board);
 	$status = read_status();
 	if($status['status']=='started' && $status['p_turn']==$b && $b!=null) {
 		// It my turn !!!!
 		$n = add_valid_moves_to_board($board,$b);
-		
 		// Εάν n==0, τότε έχασα !!!!!
 		// Θα πρέπει να ενημερωθεί το game_status.
 	}
@@ -105,26 +101,20 @@ function show_board_by_player($b) {
  
 function roll() {
     global $mysqli;
-
     // Call roll_diceOUT procedure
     $sql = "CALL roll_diceOUT(@generated_dice_result)";
     $st = $mysqli->prepare($sql);
     $st->execute();
-
     $result = $st->get_result();
     $data = $result->fetch_all(MYSQLI_ASSOC);
-$st -> close();
-
+    $st -> close();
     // Return the data as JSON
     header('Content-type: application/json');
     echo json_encode($data, JSON_PRETTY_PRINT);
-
 	$pieceNumbers = array(1, 2, 3, 4, 111, 222, 333, 444);
-
 	foreach ($pieceNumbers as $piece_num) {
         $sqlRollDice = "CALL roll_dice(?, @generated_dice_result)";
         $stRollDice = $mysqli->prepare($sqlRollDice);
-
         // Check if the prepare statement was successful for roll_dice
         if (!$stRollDice) {
             echo "Error in prepare statement: " . $mysqli->error;
@@ -133,10 +123,7 @@ $st -> close();
             $stRollDice->bind_param("i", $piece_num);
             $stRollDice->execute();
             $stRollDice->close();}
-  
-}
-
- 
+    }
 }
 
  function roll_dice($piece_num) {
