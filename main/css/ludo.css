@@ -1,0 +1,47 @@
+#ltable td {
+   width: 3em; height: 3em; border: solid black 1px; text-align: center;}
+#ltable {border-collapse: collapse;}
+td.B_square {background-color:black;}
+td.G_square {background-color:green;}
+td.Y_square {background-color:yellow;}
+td.R_square {background-color:red;}
+td.W_square {background-color:white;}
+td.GR_square {background: color #b8b8b8;}
+img.piece {width: 2.1em; height: 2.8em;}
+#ludo_board td {
+   width: 2.5em;
+   height: 2.5em;
+   border: 1px solid grey; 
+   text-align: center;
+ }
+ #ludo_board{border-collapse: collapse;}
+ #ludo_board td.R_square.highlight {
+   background-color: purple;
+   border: 1px solid black
+}
+#ludo_board td.G_square.highlight {
+   background-color: purple;
+   border: 1px solid black
+}
+#ludo_board td.B_square.highlight {
+   background-color: purple;
+   border: 1px solid black
+}
+#ludo_board td.Y_square.highlight {
+   background-color: purple;
+   border: 1px solid black
+}
+#ludo_board td.W_square.highlight {
+   background-color: purple;
+   border: 1px solid black
+}
+#ludo_board td.MIX_square {
+   background: linear-gradient(to top, green, green) top left,
+   linear-gradient(to bottom, yellow, yellow) bottom left,
+   linear-gradient(to right, red, red) top right,
+   linear-gradient(to left, black, black) top left,
+ black ;
+background-size: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 100% 100%;
+background-position: top left, bottom left, top right, top left, top left;
+background-repeat: no-repeat;
+}
